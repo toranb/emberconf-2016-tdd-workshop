@@ -13,6 +13,7 @@ export default Ember.Component.extend({
             var model = service.model;
             this.send('cancel');
             model.rollback();
+            attempt.retry();
         }
     }
 });
