@@ -59,3 +59,18 @@ test('clicking the details link should load up the detail view', function(assert
         assert.equal(find('.save-btn').text(), 'Save');
     });
 });
+
+test('clicking save will fire ajax request and redirect', function(assert) {
+    server.get('/users', (db, request) => {
+        return users.list();
+    });
+    visit('/users/1');
+    fillIn('.detail-name', 'wat');
+    server.put('/users/1', (db, request) => {
+        assert.equal(request.requestBody, Ember.$.param({name: 'wat'}));
+    });
+    click('.save-btn');
+    andThen(function() {
+        assert.equal(currentURL(), '/users');
+    });
+});
