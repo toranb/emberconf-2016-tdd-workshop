@@ -11,6 +11,13 @@
             {{#validation-error-field submitted=submitted field="subject" className="subject-validation-error" model=model validation=subjectValidation}}invalid subject{{/validation-error-field}}
           </div>
           <div class="form-group">
+            <select class="form-control detail-status" onchange={{action "changed" value="target.value"}}>
+              {{#each statuses as |status|}}
+              <option value={{status.id}} selected={{is-equal status.id model.status.id}}>{{status.name}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <div class="form-group">
             <button class="save-btn btn btn-primary" {{action "save"}}>Save</button>
           </div>
         </span>

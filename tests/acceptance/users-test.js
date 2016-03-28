@@ -15,7 +15,7 @@ module('Acceptance: Users', {
     }
 });
 
-QUnit.skip('when model is dirty a prompt allows user to cancel or rollback', function(assert) {
+test('when model is dirty a prompt allows user to cancel or rollback', function(assert) {
     server.get('/users', (db, request) => {
       return users.list();
     });

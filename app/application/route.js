@@ -7,5 +7,9 @@ export default Ember.Route.extend({
         roles.forEach(function(role) {
             store.push('role', role);
         });
+        var statuses = Ember.$('[preload-status]').data('configuration');
+        statuses.forEach(function(status) {
+            store.push('status', status);
+        });
     }
 });

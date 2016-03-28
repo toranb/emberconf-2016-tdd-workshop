@@ -41,3 +41,19 @@ test('clicking the details link should load up the detail view', function(assert
         assert.equal(find('.save-btn').text(), 'Save');
     });
 });
+
+test('should fire ajax request and redirect user', function(assert) {
+    server.get('/issues', () => {
+        return issues.list();
+    });
+    visit('/issues/1');
+    fillIn('.detail-subject', 'x');
+    fillIn('.detail-status', 9);
+    server.put('/issues/1', (db, request) => {
+        assert.equal(request.requestBody, Ember.$.param({subject: 'x', status: 9}));
+    });
+    click('.save-btn');
+    andThen(function() {
+        assert.equal(currentURL(), '/issues');
+    });
+});
