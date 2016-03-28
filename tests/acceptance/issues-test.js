@@ -43,12 +43,14 @@ test('clicking the details link should load up the detail view', function(assert
 });
 
 test('should fire ajax request and redirect user', function(assert) {
+    var selector = 'select.detail-status + .selectize-control';
     server.get('/issues', () => {
         return issues.list();
     });
     visit('/issues/1');
     fillIn('.detail-subject', 'x');
-    fillIn('.detail-status', 9);
+    click(`${selector} > .selectize-input`);
+    click(`${selector} > .selectize-dropdown div.option:eq(1)`);
     server.put('/issues/1', (db, request) => {
         assert.equal(request.requestBody, Ember.$.param({subject: 'x', status: 9}));
     });

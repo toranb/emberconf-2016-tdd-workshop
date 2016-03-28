@@ -4,9 +4,9 @@ import {ValidationMixin, validate} from 'ember-cli-simple-validation/mixins/vali
 export default Ember.Component.extend(ValidationMixin, {
     subjectValidation: validate('model.subject'),
     actions: {
-        changed: function(new_status_id) {
+        changed: function(new_status) {
             var issue = this.get('model');
-            issue.change_status(new_status_id);
+            issue.change_status(new_status.get('id'));
         },
         subjectDidChange: function(value) {
             this.get('model').set('subject', value);

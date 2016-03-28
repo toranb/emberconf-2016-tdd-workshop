@@ -31,6 +31,16 @@ test('when model is dirty a prompt allows user to cancel or rollback', function(
         assert.equal(currentURL(), '/users/1');
         assert.ok(find('.x-modal').is(':hidden'));
     });
+    click('.list-detail-link:eq(1)');
+    andThen(function() {
+        assert.equal(currentURL(), '/users/1');
+        assert.ok(find('.x-modal').is(':visible'));
+    });
+    click('.x-modal-rollback');
+    andThen(function() {
+        assert.equal(currentURL(), '/users/2');
+        assert.ok(find('.x-modal').is(':hidden'));
+    });
 });
 
 test('users url will show list of users including each name', function(assert) {
