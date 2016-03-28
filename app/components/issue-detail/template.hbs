@@ -1,0 +1,20 @@
+<section class="cards">
+  <div>
+    <div class="cards">
+      <div class="details">
+        <span class="card_title">
+          <h4>Details</h4>
+          <hr />
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input id="subject" placeholder="subject" class="form-control detail-subject" value={{model.subject}} oninput={{action "subjectDidChange" value="target.value"}} />
+            {{#validation-error-field submitted=submitted field="subject" className="subject-validation-error" model=model validation=subjectValidation}}invalid subject{{/validation-error-field}}
+          </div>
+          <div class="form-group">
+            <button class="save-btn btn btn-primary" {{action "save"}}>Save</button>
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

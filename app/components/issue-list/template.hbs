@@ -1,0 +1,40 @@
+<div id="content" class="group">
+  <section class="board-show group">
+
+    <div class="{{if isActiveRoute "col-md-12" "col-md-8"}}">
+      <div class="list">
+        <section class="card_section unassigned">
+
+          {{#each model as |issue|}}
+          <div class="cards issue-list-item">
+            <div class="card">
+              <div class="container card_project">
+
+                <div class="row">
+                  <div class="pull-left">
+                    <div class="todo_project">{{#link-to "issues.detail" issue.id class="list-detail-link"}}{{issue.subject}}{{/link-to}}</div>
+                    <div class="todo_status">click for details</div>
+                    <div class="todo_status"><span class="label label-success">activated</span></div>
+                  </div>
+                  <div class="pull-right">
+                    <img height="48px;" width="48px;" src="images/anonymous-user-gravatar.png" class="img-rounded ghx-avatar-img" />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          {{/each}}
+
+        </section>
+      </div>
+    </div>
+
+    <div class="details_section {{if isActiveRoute "hidden" "col-md-4"}}">
+      <div class="list">
+        {{outlet}}
+      </div>
+    </div>
+
+  </section>
+</div>

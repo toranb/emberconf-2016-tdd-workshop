@@ -1,0 +1,18 @@
+<div class="modal x-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button {{action "cancel"}} type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Abandon changes?</h4>
+      </div>
+      <div class="modal-body">
+        <p>You have unsaved changes. Do you want to throw out your current changes?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default x-modal-cancel" {{action "cancel"}}>No</button>
+        <button type="button" class="btn btn-primary x-modal-rollback" {{action "rollback"}}>Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop x-modal-backdrop" style="display: none"></div>
