@@ -61,13 +61,15 @@ test('clicking the details link should load up the detail view', function(assert
 });
 
 test('clicking save will fire ajax request and redirect', function(assert) {
+    var GUEST_ROLE_PRIMARY_KEY = 3;
     server.get('/users', (db, request) => {
         return users.list();
     });
     visit('/users/1');
     fillIn('.detail-name', 'wat');
+    fillIn('.detail-role', GUEST_ROLE_PRIMARY_KEY);
     server.put('/users/1', (db, request) => {
-        assert.equal(request.requestBody, Ember.$.param({name: 'wat'}));
+        assert.equal(request.requestBody, Ember.$.param({name: 'wat', role: GUEST_ROLE_PRIMARY_KEY}));
     });
     click('.save-btn');
     andThen(function() {

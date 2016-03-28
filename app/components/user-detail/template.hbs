@@ -11,6 +11,13 @@
             {{#validation-error-field submitted=submitted field="name" className="name-validation-error" model=model validation=nameValidation}}invalid name{{/validation-error-field}}
           </div>
           <div class="form-group">
+            <select class="detail-role form-control" onchange={{action "changed" value="target.value"}}>
+              {{#each roles as |role|}}
+              <option value={{role.id}} selected={{is-equal role.id model.role.id}}>{{role.name}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <div class="form-group">
             <button class="save-btn btn btn-primary" {{action "save"}}>Save</button>
           </div>
         </span>
