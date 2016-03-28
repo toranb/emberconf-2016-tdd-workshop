@@ -86,3 +86,16 @@ test('clicking save will fire ajax request and redirect', function(assert) {
         assert.equal(currentURL(), '/users');
     });
 });
+
+test('toranz upload file works here, yay!', function(assert) {
+    var files = [{name: 'tmux.conf', size: 334}];
+    server.get('/users', (db, request) => {
+        return users.list();
+    });
+    visit('/users/1');
+    upload('upload', files);
+    andThen(function() {
+        //console.log will show it's working'
+        assert.equal(currentURL(), '/users/1');
+    });
+});

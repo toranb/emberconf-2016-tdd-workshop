@@ -4,6 +4,10 @@ import {ValidationMixin, validate} from 'ember-cli-simple-validation/mixins/vali
 export default Ember.Component.extend(ValidationMixin, {
     nameValidation: validate('model.name'),
     actions: {
+        upload: function(e) {
+            var files = e.target.files;
+            console.log(files);
+        },
         changed: function(new_role_id) {
             var user = this.get('model');
             user.change_role(new_role_id);
