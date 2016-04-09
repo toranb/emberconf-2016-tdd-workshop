@@ -1,3 +1,7 @@
+The video I took at the end (showing dependency injection pre ember 2.3 is at the url below)
+
+https://dl.dropboxusercontent.com/u/716525/video/emberconf/2016/VideoFromEmberConf.mov
+
 # Admin
 
 This README outlines the details of collaborating on this Ember application.
